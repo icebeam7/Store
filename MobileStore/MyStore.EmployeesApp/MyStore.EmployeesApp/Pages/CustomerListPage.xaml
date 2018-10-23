@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MyStore.EmployeesApp.Pages.CustomerListPage">
+    <ContentPage.Content>
+        <StackLayout BackgroundColor="White">
+            <Label Text="Customer List" TextColor="Black" FontSize="Large" Margin="15"/>
+
+            <ActivityIndicator x:Name="indicator" Color="Green" VerticalOptions="Center" HorizontalOptions="Center"/>
+
+            <ListView x:Name="CustomersListView" ItemSelected="CustomersListView_ItemSelected" HasUnevenRows="True">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Label Text="{Binding FullName}" FontSize="Medium" 
+                                   LineBreakMode="WordWrap" TextColor="Black" Margin="10"/>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem x:Name="AddButton" Text="Add" Order="Primary" Priority="0" Clicked="AddButton_Clicked"/>
+    </ContentPage.ToolbarItems>
+</ContentPage>

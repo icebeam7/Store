@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MyStore.EmployeesApp.Pages.CustomerPage">
+    <ContentPage.Content>
+        <StackLayout BackgroundColor="White">
+            <Label Text="Customer Details" TextColor="Black" FontSize="Large" Margin="15"/>
+
+            <StackLayout Padding="15">
+                <Label Text="First Name: " TextColor="Blue" FontSize="Large"/>
+                <Entry x:Name="FirstNameTextBox" Text="{Binding FirstName}" TextColor="White"  
+                       Placeholder="First Name" PlaceholderColor="LightGray" 
+                       BackgroundColor="Black" FontSize="Medium"/>
+            </StackLayout>
+
+            <StackLayout Padding="15">
+                <Label Text="Last Name: " TextColor="Blue" FontSize="Large"/>
+                <Entry x:Name="LastNameTextBox" Text="{Binding LastName}" TextColor="White"  
+                       Placeholder="Last Name" PlaceholderColor="LightGray" 
+                       BackgroundColor="Black" FontSize="Medium"/>
+            </StackLayout>
+
+            <StackLayout Padding="15">
+                <Label Text="UserName: " TextColor="Blue" FontSize="Large"/>
+                <Entry x:Name="UserNameTextBox" Text="{Binding UserName}" TextColor="White"  
+                       Placeholder="User Name" PlaceholderColor="LightGray" 
+                       BackgroundColor="Black" FontSize="Medium"/>
+            </StackLayout>
+
+            <ActivityIndicator x:Name="indicator" Color="Green" VerticalOptions="Center" HorizontalOptions="Center"/>
+        </StackLayout>
+    </ContentPage.Content>
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem x:Name="RegisterButton" Text="Register | " Order="Primary" Priority="0" Clicked="RegisterButton_Clicked"/>
+        <ToolbarItem x:Name="ViewCustomerOrdersButton" Text="Orders | " Order="Primary" Priority="1" Clicked="ViewCustomerOrdersButton_Clicked"/>
+        <ToolbarItem x:Name="DeleteButton" Text="Delete | " Order="Primary" Priority="2" Clicked="DeleteButton_Clicked"/>
+    </ContentPage.ToolbarItems>
+</ContentPage>

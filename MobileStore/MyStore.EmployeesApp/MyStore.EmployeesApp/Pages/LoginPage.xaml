@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MyStore.EmployeesApp.Pages.LoginPage">
+    <ContentPage.Content>
+        <StackLayout BackgroundColor="White">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="3*"/>
+                </Grid.ColumnDefinitions>
+
+                <Label Text="UserName: " Grid.Row="0" Grid.Column="0" 
+                       HorizontalOptions="Start" TextColor="Black"/>
+                <Entry Placeholder="User Name" x:Name="UserNameEntry"
+                       Grid.Row="0" Grid.Column="1" WidthRequest="300"
+                       HorizontalOptions="Start" TextColor="Black"
+                       BackgroundColor="LightGreen"/>
+
+                <Label Text="Password: " Grid.Row="1" Grid.Column="0" 
+                       HorizontalOptions="Start" TextColor="Black"/>
+                <Entry x:Name="PasswordEntry"
+                       Grid.Row="1" Grid.Column="1"
+                       IsPassword="True" WidthRequest="300"
+                       HorizontalOptions="Start" TextColor="Black"
+                       BackgroundColor="LightGreen"/>
+
+                <Button x:Name="SignInButton" Text="Sign In"
+                        Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2"
+                        BackgroundColor="LightBlue" TextColor="Black"
+                        Clicked="SignInButton_Clicked"/>
+            </Grid>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
