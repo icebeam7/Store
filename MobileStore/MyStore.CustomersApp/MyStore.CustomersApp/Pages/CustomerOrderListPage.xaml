@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MyStore.CustomersApp.Pages.CustomerOrderListPage">
+    <ContentPage.Content>
+        <StackLayout BackgroundColor="White">
+            <Label Text="Order List" TextColor="Black" FontSize="Large" Margin="15"/>
+
+            <ActivityIndicator x:Name="indicator" Color="Green" VerticalOptions="Center" HorizontalOptions="Center"/>
+
+            <ListView x:Name="CustomerOrdersListView" ItemSelected="CustomerOrdersListView_ItemSelected" HasUnevenRows="True">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Grid Margin="5">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="3*"/>
+                                </Grid.ColumnDefinitions>
+
+                                <Label Grid.Row="0" Grid.Column="0" Text="Order Date: " FontSize="Medium" TextColor="Blue" Margin="10,2"/>
+                                <Label Grid.Row="1" Grid.Column="0" Text="Amount: " FontSize="Medium" TextColor="DarkGreen" Margin="10,2"/>
+                                <Label Grid.Row="2" Grid.Column="0" Text="Status: " FontSize="Medium" TextColor="Orange" Margin="10,2,10,10"/>
+
+                                <Label Grid.Row="0" Grid.Column="1" Text="{Binding Date, StringFormat='{}{0:MMMM dd, yyyy a\\t hh:mm tt}'}" 
+                                       FontSize="Medium" TextColor="Blue" Margin="10,2"/>
+                                <Label Grid.Row="1" Grid.Column="1" Text="{Binding Amount}" 
+                                       FontSize="Medium" TextColor="DarkGreen" Margin="10,2"/>
+                                <Label Grid.Row="2" Grid.Column="1" Text="{Binding OrderStatus.Name}" 
+                                       FontSize="Medium" TextColor="Orange" Margin="10,2,10,10"/>
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem x:Name="AddButton" Text="Add" Order="Primary" Priority="0" Clicked="AddButton_Clicked"/>
+    </ContentPage.ToolbarItems>
+</ContentPage>

@@ -33,7 +33,10 @@ namespace StoreWebApi.Controllers
         [HttpGet("Customer/{customerId}")]
         public IEnumerable<CustomerOrderDTO> GetCustomer_CustomerOrder([FromRoute] int customerId)
         {
-            return Mapper.Map<IEnumerable<CustomerOrderDTO>>(_context.CustomerOrder.Where(x => x.CustomerId == customerId).OrderByDescending(x => x.Date));
+            return Mapper.Map<IEnumerable<CustomerOrderDTO>>(_context.CustomerOrder
+                .Include(x => x.OrderStatus)
+                .Where(x => x.CustomerId == customerId)
+                .OrderByDescending(x => x.Date));
         }
 
         // GET: api/CustomerOrders/5

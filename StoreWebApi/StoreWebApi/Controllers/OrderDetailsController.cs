@@ -38,7 +38,9 @@ namespace StoreWebApi.Controllers
                 return BadRequest(ModelState);
             }
 
-            var orderDetail = _context.OrderDetail.Where(m => m.CustomerOrderId == orderId);
+            var orderDetail = _context.OrderDetail
+                .Include(x => x.Product)
+                .Where(m => m.CustomerOrderId == orderId);
 
             if (orderDetail == null)
             {

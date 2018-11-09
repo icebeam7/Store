@@ -31,6 +31,9 @@ namespace StoreWebApi
 
             services.AddDbContext<Models.StoreDBContext>(
                 options => options.UseSqlServer(Configuration.GetConnectionString("StoreDBContext")));
+
+            //5
+            services.AddSignalR(options => options.EnableDetailedErrors = true);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -42,6 +45,12 @@ namespace StoreWebApi
             }
 
             app.UseMvc();
+
+            //6
+            app.UseSignalR(routes =>
+            {
+                routes.MapHub<Hubs.StoreHub>("/StoreHub");
+            });
         }
     }
 }

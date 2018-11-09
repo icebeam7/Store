@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MyStore.EmployeesApp.Pages.CustomerOrderPage">
+    <ContentPage.Content>
+        <StackLayout BackgroundColor="White">
+            <Label Text="Order Details" TextColor="Black" FontSize="Large" Margin="15"/>
+
+            <StackLayout Padding="15">
+                <Label Text="Date: " TextColor="Blue" FontSize="Large"/>
+                <Label x:Name="DateLabel" FontSize="Medium" TextColor="Blue"
+                       Text="{Binding Date, StringFormat='{}{0:MMMM dd, yyyy a\\t hh:mm tt}'}"/>
+            </StackLayout>
+
+            <StackLayout Padding="15">
+                <Label Text="Amount: " TextColor="DarkGreen" FontSize="Large"/>
+                <Label x:Name="AmountLabel" FontSize="Medium" TextColor="DarkGreen"
+                       Text="{Binding Amount}" />
+            </StackLayout>
+
+            <StackLayout Padding="15">
+                <Label Text="Status: " TextColor="Orange" FontSize="Large"/>
+                <Picker x:Name="StatusPicker" TextColor="Orange" />
+            </StackLayout>
+
+            <ActivityIndicator x:Name="indicator" Color="Green" VerticalOptions="Center" HorizontalOptions="Center"/>
+        </StackLayout>
+    </ContentPage.Content>
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem x:Name="UpdateStatusButton" Text="Update Status" Order="Primary" Priority="0" Clicked="UpdateStatusButton_Clicked"/>
+    </ContentPage.ToolbarItems>
+</ContentPage>

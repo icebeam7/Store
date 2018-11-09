@@ -14,5 +14,6 @@ namespace MyStore.Models
         public CustomerDTO Customer { get; set; }
         public OrderStatusDTO OrderStatus { get; set; }
         public List<OrderDetailDTO> OrderDetail { get; set; }
+
     }
 }

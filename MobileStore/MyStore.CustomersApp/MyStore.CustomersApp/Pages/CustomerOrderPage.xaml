@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MyStore.CustomersApp.Pages.CustomerOrderPage">
+    <ContentPage.Content>
+        <StackLayout BackgroundColor="White">
+            <Label Text="Order Details" TextColor="Black" FontSize="Large" Margin="15"/>
+
+            <StackLayout Padding="15">
+                <Label Text="Date: " TextColor="Blue" FontSize="Large"/>
+                <Label x:Name="DateLabel" FontSize="Medium" TextColor="Blue"
+                       Text="{Binding Date, StringFormat='{}{0:MMMM dd, yyyy a\\t hh:mm tt}'}"/>
+            </StackLayout>
+
+            <StackLayout Padding="15">
+                <Label Text="Amount: " TextColor="DarkGreen" FontSize="Large"/>
+                <Entry x:Name="AmountTextBox" Text="{Binding Amount}" TextColor="White"  
+                       Placeholder="Amount" PlaceholderColor="LightGray" 
+                       BackgroundColor="Black" FontSize="Medium"/>
+            </StackLayout>
+
+            <StackLayout Padding="15">
+                <Label Text="Status: " TextColor="Orange" FontSize="Large"/>
+                <Picker x:Name="StatusPicker" TextColor="Orange" IsEnabled="False" />
+            </StackLayout>
+
+            <ActivityIndicator x:Name="indicator" Color="Green" VerticalOptions="Center" HorizontalOptions="Center"/>
+        </StackLayout>
+    </ContentPage.Content>
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem x:Name="RegisterButton" Text="Register | " Order="Primary" Priority="0" Clicked="RegisterButton_Clicked"/>
+        <ToolbarItem x:Name="DeleteButton" Text="Delete | " Order="Primary" Priority="2" Clicked="DeleteButton_Clicked"/>
+    </ContentPage.ToolbarItems>
+</ContentPage>

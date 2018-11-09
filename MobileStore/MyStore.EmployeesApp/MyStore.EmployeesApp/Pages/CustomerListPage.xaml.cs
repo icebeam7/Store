@@ -35,9 +35,12 @@ namespace MyStore.EmployeesApp.Pages
         {
             try
             {
-                var item = (CustomerDTO)e.SelectedItem;
-                await Navigation.PushAsync(new CustomerPage(item));
-                CustomersListView.SelectedItem = null;
+                if (e.SelectedItem != null)
+                {
+                    var item = (CustomerDTO)e.SelectedItem;
+                    await Navigation.PushAsync(new CustomerPage(item));
+                    CustomersListView.SelectedItem = null;
+                }
             }
             catch (Exception ex)
             {

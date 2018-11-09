@@ -5,6 +5,7 @@ using Xamarin.Forms.Xaml;
 
 using MyStore.Services;
 using MyStore.Models;
+using MyStore.EmployeesApp.Services;
 
 namespace MyStore.EmployeesApp.Pages
 {
@@ -26,6 +27,10 @@ namespace MyStore.EmployeesApp.Pages
             if (employee != default(EmployeeDTO))
             {
                 App.CurrentEmployee = employee;
+
+                App.SignalRService = new SignalRService();
+                await App.SignalRService.InitEmployee(App.CurrentEmployee);
+
                 await DisplayAlert("Welcome!", $"Welcome {employee.FullName}", "OK");
                 await Navigation.PushAsync(new CustomerListPage());
             }

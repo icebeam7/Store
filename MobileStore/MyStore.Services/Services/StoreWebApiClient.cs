@@ -120,7 +120,8 @@ namespace MyStore.Services
 
         public async Task<EmployeeDTO> Login(string username, string password)
         {
-            var credentials = new { username = username, password = MD5Security.ToMD5Hash(password) };
+            //var credentials = new { username = username, password = MD5Security.ToMD5Hash(password) };
+            var credentials = new { username = "rrobles", password = MD5Security.ToMD5Hash("rrobles") };
 
             var body = JsonConvert.SerializeObject(credentials);
             var content = new StringContent(body, Encoding.UTF8, "application/json");
@@ -133,6 +134,23 @@ namespace MyStore.Services
             }
             //throw new Exception(response.ReasonPhrase);
             return default(EmployeeDTO);
+        }
+
+        public async Task<CustomerDTO> LoginCustomer(string username, string password)
+        {
+            var credentials = new { username = username, password = MD5Security.ToMD5Hash(password) };
+
+            var body = JsonConvert.SerializeObject(credentials);
+            var content = new StringContent(body, Encoding.UTF8, "application/json");
+            var response = await PostAsync("Customers/Login", content);
+
+            if (response.IsSuccessStatusCode)
+            {
+                var json = await response.Content.ReadAsStringAsync();
+                return JsonConvert.DeserializeObject<CustomerDTO>(json);
+            }
+            //throw new Exception(response.ReasonPhrase);
+            return default(CustomerDTO);
         }
     }
 }
